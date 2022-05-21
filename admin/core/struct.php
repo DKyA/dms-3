@@ -35,5 +35,5 @@ if (!$PI -> special) {
 } 
 else {
     $dest = $path['components'] . "specials/$PI->ref.php";
-    create_and_open($dest, '');
+    create_and_open($dest);
 }

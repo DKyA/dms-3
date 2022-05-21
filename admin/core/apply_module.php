@@ -12,12 +12,10 @@ function apply_modules(array $modules) {
         $module = $modules[0];
 
         if (Nestor::$nestor_id == -1 && $module -> module_nestable != '') {
-            print("Můžu pokračovat, jsem lineární.");
-            separate();
+
         }
         elseif (Nestor::$nestor_id == $module -> return_affiliation()) {
-            print("Můžu pokračovat, jsem lineární.");
-            separate();
+
         }
         else {
             return;
@@ -25,19 +23,27 @@ function apply_modules(array $modules) {
 
         $data = $module -> return_data();
 
-        $placeholder = '<?php
+        $placeholder = '<div>Komponenta.
+        <?php
 apply_modules($modules);
-?>';
+?>
+</div>';
+
+
+// Problém, který aktuálně řeším:
+// Potřebuju kvůli matematice zničit přechozí modul už na začátku, zároveň ale potřebuju požít jeho obsah
+// |
+// v
 
 
         if ($module -> module_nestable) {
             Nestor::add_nestor();
-            create_and_open("{$path['components']}modules/_{$module -> module_type}.php", $placeholder);
+            create_and_open_modules("{$path['components']}modules/_{$module -> module_type}.php", $placeholder, $modules);
             array_shift($modules);
             continue;
         }
 
-        create_and_open("{$path['html']}components/_{$module -> module_type}.html", $placeholder);
+        create_and_open_modules("{$path['html']}components/_{$module -> module_type}.html", '<p>Subkomponenta</p>', $modules);
         array_shift($modules);
 
         if ($infinite_loop > 10) {
