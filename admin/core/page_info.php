@@ -5,6 +5,7 @@ class PAGE_INFO {
     public $info;
 
     public $id;
+    public $ref;
     public $name;
     public $in_nav;
     public $infobar;
@@ -22,6 +23,7 @@ class PAGE_INFO {
 
     private function initialise() {
         $this -> id = $this -> info['id'];
+        $this -> ref = $this -> info['ref'];
         $this -> name = $this -> info['name'];
         $this -> in_nav = $this -> info['in_nav'];
         $this -> infobar = $this -> info['infobar'];
@@ -31,7 +33,7 @@ class PAGE_INFO {
 
 }
 
-$PAGE_INFO = new PAGE_INFO($reference);
+$PI = new PAGE_INFO($reference);
 
 // Run Updates:
 utils('core', 'update');

@@ -13,7 +13,6 @@
     - Jak udělat jazyky..?
     - Napadá mě jednoduchá věc. Tabulky by měly i jinojazyčné varianty a ve finále by se jenom přepnul přepínač
     - K tomuhle by bylo fajn udělat první user login, abych měl data...
-
 ## Idea
     - DevDocs věc - byly by tam přehledně popsané hodnoty pro developera, co jsou jaké proměnné, jaké fce a co dělají
     - + jejich aktuální hodnoty... Možná.

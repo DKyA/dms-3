@@ -7,6 +7,7 @@ $path = [
     'categories' => $root . '/admin/categories/',
     'core' => $root . '/admin/core/',
     'components' => $root . '/admin/components/',
+    'modules' => $root . '/admin/components/modules/',
     'static' => $root . '/admin/static/',
     'html' => $root . '/admin/static/html/',
     'docs' => $root . '/admin/static/docs/',
