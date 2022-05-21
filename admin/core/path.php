@@ -1,0 +1,12 @@
+<?php
+
+$root = $_SERVER['DOCUMENT_ROOT'];
+
+$path = [
+    'admin' => $root . '/admin/',
+    'core' => $root . '/admin/core/',
+    'components' => $root . '/admin/components/',
+    'static' => $root . '/admin/static/',
+    'html' => $root . '/admin/static/html/',
+    'docs' => $root . '/admin/static/docs/',
+];
