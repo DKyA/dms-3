@@ -5,6 +5,11 @@
 // Zároveň bych tady chtěl časem spouštět přidávací smyčku. I když to možná nechám na další soubory
 // Ví vil sí.
 
+require $path['core'] . 'apply_module.php';
+
+// Připravím si definici modulu...
+utils('core', 'definitions');
+
 if ($PI -> in_nav) {
     require $path['modules'] . 'nav.php';
 }
