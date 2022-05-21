@@ -3,3 +3,7 @@
 // Napadá mě, že by to mohlo dělat 2 věci...
 // 1. Vyhodit nějaký základní template
 // 2. Zavolat dané komponenty. Tady si můžu ozkoušet mechanismus, vzhledem k tomu, že sem není potřeba plést databázi.
+
+class Layout extends BaseLayout {
+    // Už tady je constructor...
+}
