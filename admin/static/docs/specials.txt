@@ -3,7 +3,7 @@
 // $modules => všechny moduly, které chci na special stránce mít
 
 $modules = [
-    //['headline', ['data' => ['Testovací text'], 'level' => 3]], 
+    //['headline', ['data' => ['Testovací text'], 'attributes' => [], 'level' => 3]], 
 ];
 
 $layout = new Layout($modules, false);
