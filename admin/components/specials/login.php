@@ -7,10 +7,41 @@
 // Tohle pak vezmu a hodím to jako template do stvořitele.
 
 $modules = [
-    ['form', ['data' => ["$text[0] │ Přihlášení"], 'attributes' => ['type' => 'login'], 'depth' => 1]],
-    ['input', ['data' => ['Uživatelské jméno'], 'attributes' => ['type' => 'text'], 'affiliation' => 1]], 
-    ['input', ['data' => ['Heslo'], 'attributes' => ['type' => 'password'], 'affiliation' => 1]], 
-    ['button', ['data' => ['Přihlásit'], 'attributes' => ['type' => 'submit'], 'affiliation' => 1]],
+    [
+        'form', [
+            'data' => ["$text[0] │ Přihlášení"],
+            'attributes' => ['type' => 'login'],
+            'depth' => 1
+        ]
+    ],
+    [
+        'input', [
+            'data' => ['Uživatelské jméno'],
+            'attributes' => ['type' => 'text', 'placeholder' => 'Přihlašovací jméno', 'required' => True], 
+            'affiliation' => 1
+        ]
+    ], 
+    [
+        'input', [
+            'data' => ['Heslo'], 
+            'attributes' => ['type' => 'password', 'placeholder' => 'Vaše heslo', 'required' => True], 
+            'affiliation' => 1
+        ]
+    ], 
+    [
+        'button', [
+            'data' => ['Přihlásit'], 
+            'attributes' => ['type' => 'submit'], 
+            'affiliation' => 1
+        ]
+    ],
+    [
+        'link', [
+            'data' => ['Zapomenuté heslo?'],
+            'attributes' => ['href' => '#', 'type' => 'footnote'],
+            'affiliation' => 1
+        ]
+    ],
 ];
 
 open_template($modules, 'blob_middle');

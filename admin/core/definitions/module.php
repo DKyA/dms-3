@@ -37,10 +37,11 @@ class AnonymousModule extends FatherModule {
         $statement = $db -> prepare("SELECT * FROM component_list WHERE desc_db = ?");
         $statement -> execute(["c_$module_type"]);
         $this -> module = $statement -> fetch(PDO::FETCH_ASSOC);
-        $this -> module_nestable = $this -> module['nestable'];
+        $this -> module_nestable = ($this -> module['nestable']) ?? False;
 
         // Tohle je ta změna.
         $this -> attributes = $attributes;
+        $this -> attributes['attributes']['id'] = $id;
         $this -> id = $id;
 
     }

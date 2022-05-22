@@ -20,3 +20,10 @@
     text-decoration: none;
 
 }
+
+@mixin padding-x($number) {
+
+    padding-left: $number;
+    padding-right: $number;
+    
+}
