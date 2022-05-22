@@ -24,7 +24,7 @@ function create_and_open_placeholder($dest, $content) {
 }
 
 
-function create_and_open_modules($dest, $content, $layout) {
+function create_and_open_modules($dest, $content, $layout, $data) {
     global $path;
 
     if (!file_exists($dest)) {

@@ -8,11 +8,11 @@
 
 
 $modules = [
-    ['headline', ['data' => ['Testovací text'], 'level' => 3]], 
-    ['form', ['data' => ['Přihlašovací formulář'], 'depth' => 1]],
-    ['input', ['data' => ['Testovací text'], 'type' => 'text', 'affiliation' => 1]], 
-    ['input', ['data' => ['Testovací text'], 'type' => 'password', 'affiliation' => 1]], 
-    ['button', ['data' => ['Testovací text'], 'type' => 'submit', 'affiliation' => 1]],
+    ['headline', ['data' => ['Nadpis komponenty'], 'level' => 3]], 
+    ['form', ['data' => ['Jméno komponenty'], 'depth' => 1]],
+    ['input', ['data' => ['Uživatelské jméno'], 'type' => 'text', 'affiliation' => 1]], 
+    ['input', ['data' => ['Heslo'], 'type' => 'password', 'affiliation' => 1]], 
+    ['button', ['data' => ['Přihlásit'], 'type' => 'submit', 'affiliation' => 1]],
 ];
 
 open_template($modules, 'blob_middle');

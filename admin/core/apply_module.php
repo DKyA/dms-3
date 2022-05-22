@@ -73,7 +73,7 @@ function apply_modules(object $layout) {
         $data = $module -> return_data();
         // Příprava dat z objektu k tisku.
 
-        $placeholder = '<div>Komponenta Headline.
+        $placeholder = '<div>Komponenta.
     <?php
         apply_modules($layout);
     ?>
@@ -86,14 +86,14 @@ function apply_modules(object $layout) {
             // Zároveň zvednu Nestora.
             Nestor::add_nestor();
             $dest = "{$path['components']}modules/_{$module -> module_type}.php";
-            create_and_open_modules($dest, $placeholder, $layout);
+            create_and_open_modules($dest, $placeholder, $layout, $data);
             $layout -> pop_modules();
             continue;
         }
 
         // TOhle slouží pro nenestovatelné subkomponenty.
         $dest = "{$path['html']}components/_{$module -> module_type}.html";
-        create_and_open_modules($dest, '<p>Subkomponenta</p>', $layout);
+        create_and_open_modules($dest, '<p>Subkomponenta</p>', $layout, $data);
         $layout -> pop_modules();
 
         // Zase hlídač nekonečného cyklu. V tuto chvíli je podmínka nastavená na sto. V budoucnu je třeba odstranit.
