@@ -70,30 +70,23 @@ function apply_modules(object $layout) {
             return;
         }
 
-        $data = $module -> return_data();
-        // Příprava dat z objektu k tisku.
 
-        $placeholder = '<div>Komponenta.
+        if ($module -> module_nestable) {
+            Nestor::add_nestor();
+            $folder = 'modules';
+            $placeholder = '<div><?=$data[0]?>
     <?php
         apply_modules($layout);
     ?>
 </div>';
-// Placeholder pro tvorbu nových komponent.
-
-
-        if ($module -> module_nestable) {
-            // Pokud zjistím, že modul má možnost nestování, přiložím php.
-            // Zároveň zvednu Nestora.
-            Nestor::add_nestor();
-            $dest = "{$path['components']}modules/_{$module -> module_type}.php";
-            create_and_open_modules($dest, $placeholder, $layout, $data);
-            $layout -> pop_modules();
-            continue;
+        }
+        else {
+            $placeholder = '<div><?=$data[0]?></div>';
+            $folder = 'submodules';
         }
 
-        // TOhle slouží pro nenestovatelné subkomponenty.
-        $dest = "{$path['html']}components/_{$module -> module_type}.html";
-        create_and_open_modules($dest, '<p>Subkomponenta</p>', $layout, $data);
+        $dest = "{$path['components']}{$folder}/_{$module -> module_type}.php";
+        create_and_open_modules($dest, $placeholder, $layout, $module);
         $layout -> pop_modules();
 
         // Zase hlídač nekonečného cyklu. V tuto chvíli je podmínka nastavená na sto. V budoucnu je třeba odstranit.
@@ -107,4 +100,3 @@ function apply_modules(object $layout) {
 
 }
 
-// while cyklus... atd... Asi...  A popovat. Vždycky se zanořím do scopu, což bude fce. V nejhorším případě se vrátím.

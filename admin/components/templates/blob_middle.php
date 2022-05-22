@@ -1,5 +1,5 @@
-<div class="l_special l_special--m-blob">
-    <div class="l_special__blob">
+<div class="l-special l-special--m-blob">
+    <div class="l-special__blob">
         <?php
             apply_modules($layout);
         ?>
