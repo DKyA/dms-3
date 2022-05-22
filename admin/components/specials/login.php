@@ -6,13 +6,11 @@
 
 // Tohle pak vezmu a hodím to jako template do stvořitele.
 
-
 $modules = [
-    ['headline', ['data' => ['Nadpis komponenty'], 'level' => 3]], 
-    ['form', ['data' => ['Jméno komponenty'], 'depth' => 1]],
-    ['input', ['data' => ['Uživatelské jméno'], 'type' => 'text', 'affiliation' => 1]], 
-    ['input', ['data' => ['Heslo'], 'type' => 'password', 'affiliation' => 1]], 
-    ['button', ['data' => ['Přihlásit'], 'type' => 'submit', 'affiliation' => 1]],
+    ['form', ['data' => ["$text[0] │ Přihlášení"], 'attributes' => ['type' => 'login'], 'depth' => 1]],
+    ['input', ['data' => ['Uživatelské jméno'], 'attributes' => ['type' => 'text'], 'affiliation' => 1]], 
+    ['input', ['data' => ['Heslo'], 'attributes' => ['type' => 'password'], 'affiliation' => 1]], 
+    ['button', ['data' => ['Přihlásit'], 'attributes' => ['type' => 'submit'], 'affiliation' => 1]],
 ];
 
 open_template($modules, 'blob_middle');
