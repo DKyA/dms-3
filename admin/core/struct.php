@@ -34,7 +34,6 @@ class Nestor {
 
 $nestor = new Nestor();
 
-
 if (!$PI -> special) {
     require $path['core'] . 'read_components.php';
 } 

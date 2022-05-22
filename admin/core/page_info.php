@@ -34,6 +34,5 @@ class PAGE_INFO {
 }
 
 $PI = new PAGE_INFO($reference);
-
 // Run Updates:
 utils('core', 'update');
