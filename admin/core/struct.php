@@ -25,6 +25,11 @@ class Nestor {
         self::$nestor_id++;
         return self::$nestor_id;
     }
+
+    static function subtract_nestor() {
+        self::$nestor_id--;
+    }
+
 }
 
 $nestor = new Nestor();

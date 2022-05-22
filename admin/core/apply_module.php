@@ -1,52 +1,103 @@
 <?php
-// Tady se vyloženě budou aplikovat moduly, takže připravovat k tisku.
-// Ideálně tady připravit proměnnou $data, ...
-// Jsem si docela jistej, že se tohle celý ještě bude měnit s tím, jak budu integrovat nestable věci.
-function apply_modules(array $modules) {
+
+/*
+
+-- Jak tohle funguje? --
+
+    - Teď jsem to dopsal a už si nejsem úplně 100% jistej. Ale zkusím vysvětlit
+    - Tahle funkce se volá z FE nastavování. Projde všechny prvky, které se nachází v aktuálním pořadníku a vytiskne je
+    - Je to nepřímá rekurze -> vyloženě se tady jde po prvcích.
+    - Potenciální problém -> skákání o více řádů mezi sebou. Ale ani to by snad neměl být problém... Snad...
+
+*/
+
+
+class Layout {
+    public $modules;
+
+    function __construct($modules, $use_db) {
+        if ($use_db) {
+            return;
+        }
+
+        $this -> modules = [];
+
+        foreach ($modules as $module) {
+            $head = array_shift($module);
+            array_push($this -> modules, new AnonymousModule($head, $module[0]));
+        }
+
+    }
+
+    function pop_modules() {
+        array_shift($this -> modules);
+    }
+
+    function return_given_module($n) {
+        return $this -> modules[$n];
+    }
+
+    function return_module_length() {
+        return count($this -> modules);
+    }
+
+}
+
+
+function apply_modules(object $layout) {
     global $path;
 
     $infinite_loop = 0;
+    // Testovací zarážka, nechám jí tady i do budoucnosti, kdyby tu byla nějaká schovaná chyba.
 
-    while (count($modules) > 0) {
+    while ($layout -> return_module_length() > 0) {
+        $n = Nestor::$nestor_id + 1;
+        // Tohle $n slouží hlídání indexů, jestli už nejsem moc daleko.
+        // Nestor jako takový slouží k uchování hodnoty posledního indexu. n je pak délka.
 
-        $module = $modules[0];
-
-        if (Nestor::$nestor_id == -1 && $module -> module_nestable != '') {
-
+        if ($n == $layout -> return_module_length()) {
+            return;
         }
-        elseif (Nestor::$nestor_id == $module -> return_affiliation()) {
 
-        }
-        else {
+        // Tohle je zarážka, abych nechodil moc daleko.
+
+        $module = $layout -> return_given_module($n);
+        // Inicializace aktuálního modulu.
+
+        // Blok, který rozhodne, jestli ještě patřím do skopu, nebo ne. Potom breakne.
+        if (Nestor::$nestor_id > $module -> return_affiliation()) {
+            Nestor::subtract_nestor();
             return;
         }
 
         $data = $module -> return_data();
+        // Příprava dat z objektu k tisku.
 
-        $placeholder = '<div>Komponenta.
-        <?php
-apply_modules($modules);
-?>
+        $placeholder = '<div>Komponenta Headline.
+    <?php
+        apply_modules($layout);
+    ?>
 </div>';
-
-
-// Problém, který aktuálně řeším:
-// Potřebuju kvůli matematice zničit přechozí modul už na začátku, zároveň ale potřebuju požít jeho obsah
-// |
-// v
+// Placeholder pro tvorbu nových komponent.
 
 
         if ($module -> module_nestable) {
+            // Pokud zjistím, že modul má možnost nestování, přiložím php.
+            // Zároveň zvednu Nestora.
             Nestor::add_nestor();
-            create_and_open_modules("{$path['components']}modules/_{$module -> module_type}.php", $placeholder, $modules);
-            array_shift($modules);
+            $dest = "{$path['components']}modules/_{$module -> module_type}.php";
+            create_and_open_modules($dest, $placeholder, $layout);
+            $layout -> pop_modules();
             continue;
         }
 
-        create_and_open_modules("{$path['html']}components/_{$module -> module_type}.html", '<p>Subkomponenta</p>', $modules);
-        array_shift($modules);
+        // TOhle slouží pro nenestovatelné subkomponenty.
+        $dest = "{$path['html']}components/_{$module -> module_type}.html";
+        create_and_open_modules($dest, '<p>Subkomponenta</p>', $layout);
+        $layout -> pop_modules();
 
-        if ($infinite_loop > 10) {
+        // Zase hlídač nekonečného cyklu. V tuto chvíli je podmínka nastavená na sto. V budoucnu je třeba odstranit.
+        if ($infinite_loop > 100) {
             echo 'Nekonečný cyklus zastaven.';
             break;
         }

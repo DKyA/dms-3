@@ -8,12 +8,23 @@
 
 
 $modules = [
-    new AnonymousModule('headline', ['data' => ['Testovací text'], 'level' => 3]), 
-    new AnonymousModule('form', ['data' => ['Přihlašovací formulář'], 'id' => 1]),
-    new AnonymousModule('input', ['data' => ['Testovací text'], 'type' => 'text', 'affiliation' => 1]), 
-    new AnonymousModule('input', ['data' => ['Testovací text'], 'type' => 'password', 'affiliation' => 1]), 
-    new AnonymousModule('button', ['data' => ['Testovací text'], 'type' => 'submit', 'affiliation' => 1])
+    ['headline', ['data' => ['Testovací text'], 'level' => 3]], 
+    ['form', ['data' => ['Přihlašovací formulář'], 'depth' => 0]],
+    ['input', ['data' => ['Testovací text'], 'type' => 'text', 'affiliation' => 0]], 
+    ['input', ['data' => ['Testovací text'], 'type' => 'password', 'affiliation' => 0]], 
+    ['button', ['data' => ['Testovací text'], 'type' => 'submit', 'affiliation' => 0]],
+    ['headline', ['data' => ['Testovací text na konci'], 'level' => 3]], 
+    ['form', ['data' => ['Přihlašovací formulář'], 'depth' => 0]],
+    ['input', ['data' => ['Testovací text'], 'type' => 'text', 'affiliation' => 0]], 
+    ['input', ['data' => ['Testovací text'], 'type' => 'password', 'affiliation' => 0]], 
+    ['button', ['data' => ['Testovací text'], 'type' => 'submit', 'affiliation' => 0]],
+    ['form', ['data' => ['Přihlašovací formulář'], 'depth' => 1, 'affiliation' => 0]],
+    ['input', ['data' => ['Testovací text'], 'type' => 'text', 'affiliation' => 1]], 
+    ['input', ['data' => ['Testovací text'], 'type' => 'password', 'affiliation' => 1]], 
+    ['button', ['data' => ['Testovací text'], 'type' => 'submit', 'affiliation' => 1]],
+    ['headline', ['data' => ['Testovací text na konci'], 'level' => 3]], 
 ];
 
+$layout = new Layout($modules, false);
 
 require $path['components'] . 'templates/blob_middle.php';

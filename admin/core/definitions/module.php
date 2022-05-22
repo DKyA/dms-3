@@ -51,15 +51,15 @@ class AnonymousModule extends FatherModule {
 
     }
 
-    function return_id() {
+    function return_depth() {
 
-        if (!isset($this -> attributes['id'])) return;
-        return $this -> attributes['id'];
+        if (!isset($this -> attributes['depth'])) return;
+        return $this -> attributes['depth'];
 
     }
 
     function return_affiliation() {
-        if (!isset($this -> attributes['affiliation'])) return;
+        if (!isset($this -> attributes['affiliation'])) return -1;
         return $this -> attributes['affiliation'];
     }
 

@@ -3,7 +3,7 @@
         <?php
             // Idea: Dát sem něco, co zavolá zbytek.
             // Asi funkci / připravit si objekt / ...
-            apply_modules($modules);
+            apply_modules($layout);
         ?>
     </div>
 </div>
