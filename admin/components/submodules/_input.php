@@ -1,1 +1,1 @@
-<div><?=$data[0]?></div>
+<input type="<?=$attributes['type']?>" name="">

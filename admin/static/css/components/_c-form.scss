@@ -7,6 +7,9 @@
     background-color: color('white');
     box-shadow: $base_shadow;
 
+    width: 95%;
+
+
     & > * {
 
         padding: space(1) space(4);
@@ -18,9 +21,16 @@
         width: 100%;
         background-color: color(light-black);
         color: color('white');
+        text-align: center;
 
         padding: space(4);
         border-radius: space(2) space(2) 0 0;
+
+    }
+
+    &__body {
+
+        @include flex(column, center, center);
 
     }
 

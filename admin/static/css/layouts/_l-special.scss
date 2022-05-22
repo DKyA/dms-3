@@ -13,6 +13,8 @@
 
     &__blob {
 
+        width: 100%;
+        @include flex(row, center, center);
 
     }
 
