@@ -10,7 +10,7 @@ function create_and_open($dest) {
     require $dest;
 }
 
-function create_and_open_placeholders($dest, $content) {
+function create_and_open_placeholder($dest, $content) {
     global $path;
 
     if (!file_exists($dest)) {

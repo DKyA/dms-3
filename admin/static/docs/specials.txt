@@ -1,0 +1,12 @@
+<?php
+
+// $modules => všechny moduly, které chci na special stránce mít
+
+$modules = [
+    //['headline', ['data' => ['Testovací text'], 'level' => 3]], 
+];
+
+$layout = new Layout($modules, false);
+
+// Template, do kterého chci specials stránku vytisknout
+require $path['components'] . 'templates/blob_middle.php';

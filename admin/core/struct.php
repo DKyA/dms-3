@@ -39,6 +39,5 @@ if (!$PI -> special) {
     require $path['core'] . 'read_components.php';
 } 
 else {
-    $dest = $path['components'] . "specials/$PI->ref.php";
-    create_and_open($dest);
+    require $path['core'] . 'read_specials.php';
 }
