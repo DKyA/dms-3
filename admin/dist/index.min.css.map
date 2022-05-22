@@ -2,7 +2,12 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "../static/css/index.scss"
+        "../static/css/index.scss",
+        "../static/css/functions/_index.scss",
+        "../static/css/atoms/_index.scss",
+        "../static/css/components/_index.scss",
+        "../static/css/layouts/_index.scss",
+        "../static/css/layouts/_l-special.scss"
     ],
     "names": [],
     "file": "index.min.css"
