@@ -28,7 +28,9 @@ class Module extends FatherModule {
 class AnonymousModule extends FatherModule {
     // Tohle je tady pro anonymous moduly...
 
-    function __construct($module_type, $attributes) {
+    public $id;
+
+    function __construct($module_type, $attributes, $id) {
         $this -> module_type = $module_type;
 
         global $db;
@@ -39,6 +41,7 @@ class AnonymousModule extends FatherModule {
 
         // Tohle je ta změna.
         $this -> attributes = $attributes;
+        $this -> id = $id;
 
     }
 

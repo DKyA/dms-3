@@ -22,10 +22,15 @@ class Layout {
 
         $this -> modules = [];
 
-        foreach ($modules as $module) {
+        for ($i = 0; $i < count($modules); $i++) {
+            $module = $modules[$i];
             $head = array_shift($module);
-            array_push($this -> modules, new AnonymousModule($head, $module[0]));
+            array_push($this -> modules, new AnonymousModule($head, $module[0], $i));
         }
+        // foreach ($modules as $module) {
+        //     $head = array_shift($module);
+        //     array_push($this -> modules, new AnonymousModule($head, $module[0]));
+        // }
 
     }
 
