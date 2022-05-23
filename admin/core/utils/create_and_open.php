@@ -29,6 +29,8 @@ function create_and_open_modules($dest, $content, $layout, $module) {
     $data = $module -> return_data();
     $attributes = $module -> return_attributes();
 
+    $locals = new Locals($module);
+
     if (!file_exists($dest)) {
         $file = fopen($dest, 'w');
         if ($content) {

@@ -15,6 +15,7 @@ function open_template($modules, $template_name) {
     global $path;
 
     $layout = new Layout($modules, false);
+
     // layout použit v require věci.
     require $path['components'] . "templates/$template_name.php";
 
